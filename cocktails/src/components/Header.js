@@ -1,26 +1,34 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import LocalBarIcon from '@mui/icons-material/LocalBar';
+import LocalBarIcon from "@mui/icons-material/LocalBar";
+import BungalowIcon from "@mui/icons-material/Bungalow";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 function Header() {
   return (
     <StyledHeader>
       <div className="logo-container">
-      <LocalBarIcon />
-        <h2 className="logo">CocktaiLs</h2>
+        <LocalBarIcon className="logo-img" />
+        <h2 className="logo-text">CocktaiLs</h2>
       </div>
       <nav>
-      <ul className="nav-links">
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/fav">Favourites</Link>
-        </li>
-      </ul>
+        <ul className="nav-links">
+          <li>
+            <Link to="/" className="nav-link">
+              <BungalowIcon sx={{ fontSize: 20 }} />
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link to="/fav" className="nav-link">
+              <FavoriteIcon sx={{ fontSize: 20 }} />
+              Favourites
+            </Link>
+          </li>
+        </ul>
       </nav>
-      <div>
-        <button>Get a random recipe here</button>
+      <div className="random-btn-container">
+        <button className="random-btn">Get a random recipe here</button>
       </div>
     </StyledHeader>
   );
@@ -32,25 +40,54 @@ const StyledHeader = styled.header`
   align-items: center;
   width: 90%;
   margin: auto;
-  flex: 1 1 20rem;
+  color: rgb(255, 194, 68);
   .logo-container {
     display: flex;
-    flex: 1;
+    flex: 4;
+    .logo-img {
+      font-size: 2.5rem;
+      font-weight: 500;
+      margin: 1rem;
+      cursor: pointer;
+    }
+    .logo-text {
+      letter-spacing: 0.5rem;
+      color: rgb(0,160,130);
+
+      cursor: pointer;
+    }
   }
-  .logo {
-    display: flex;
-    justify-content: flex-start;
-    font-size: 2rem;
+  nav {
+    background-color: rgb(0,160,130);
+    flex: 2;
+    margin-right: 2rem;
+    letter-spacing: 0.2rem;
     font-weight: 500;
-    margin: 1rem;
-    cursor: pointer;
+    .nav-links {
+      justify-content: space-around;
+      display: flex;
+      list-style: none;
+      .nav-link {
+        font-size: 1.4rem;
+        text-decoration: none;
+        color: rgb(255, 194, 68);
+      }
+    }
   }
-  .nav-links {
+
+  .random-btn-container {
     display: flex;
-    justify-content: space-between;
-    list-style: none;
-    align-items: center;
     flex: 1;
+    .random-btn {
+      font-size: 1rem;
+      color: rgb(0,160,130);
+      background: white;
+      border-color: rgb(255, 194, 68);
+      padding: 1rem 1rem;
+      border-radius: 1rem;
+      font-weight: 400;
+      cursor: pointer;
+    }
   }
 `;
 
