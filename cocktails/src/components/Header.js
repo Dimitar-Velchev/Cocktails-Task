@@ -3,6 +3,7 @@ import styled from "styled-components";
 import LocalBarIcon from "@mui/icons-material/LocalBar";
 import BungalowIcon from "@mui/icons-material/Bungalow";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import SportsBarIcon from '@mui/icons-material/SportsBar';
 
 function Header() {
   return (
@@ -28,7 +29,7 @@ function Header() {
         </ul>
       </nav>
       <div className="random-btn-container">
-        <button className="random-btn">Get a random recipe here</button>
+        <button className="random-btn"><SportsBarIcon />  Random recipe for you </button>
       </div>
     </StyledHeader>
   );
@@ -43,7 +44,7 @@ const StyledHeader = styled.header`
   color: rgb(255, 194, 68);
   .logo-container {
     display: flex;
-    flex: 4;
+    flex: 3;
     .logo-img {
       font-size: 2.5rem;
       font-weight: 500;
@@ -78,16 +79,6 @@ const StyledHeader = styled.header`
   .random-btn-container {
     display: flex;
     flex: 1;
-    .random-btn {
-      font-size: 1rem;
-      color: rgb(0,160,130);
-      background: white;
-      border-color: rgb(255, 194, 68);
-      padding: 1rem 1rem;
-      border-radius: 1rem;
-      font-weight: 400;
-      cursor: pointer;
-    }
   }
 `;
 

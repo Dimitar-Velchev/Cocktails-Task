@@ -44,7 +44,26 @@ img{
 input{
     font-weight: bold;
     font-family: "Montserrat",sans-serif;
+    cursor: pointer;
 }
+
+
+button{
+    font-size: 1rem;
+      color: rgb(0,160,130);
+      background: white;
+      border-color: rgb(255, 194, 68);
+      padding: 0.5rem;
+      border-radius: 1rem;
+      font-weight: 400;
+      cursor: pointer;
+}
+
+button:hover {
+        border: 2px solid rgb(68, 0, 99);
+        font-weight: 600;
+        color: rgb(255, 194, 68);
+      }
 
 `;
 
