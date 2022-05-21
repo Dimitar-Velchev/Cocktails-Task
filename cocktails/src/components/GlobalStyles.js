@@ -50,7 +50,7 @@ input{
 
 button{
     font-size: 1rem;
-      color: rgb(0,160,130);
+      color: rgb(255, 194, 68);
       background: white;
       border-color: rgb(255, 194, 68);
       padding: 0.5rem;
