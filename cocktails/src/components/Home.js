@@ -2,30 +2,48 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import CocktailCard from "./CocktailCard";
 
+import getAllCocktails from "../services/getAllCocktails";
+
+import HeaderComponent from "./Header";
+import Search from "./Search";
+
 function Home() {
   const [cocktails, setCocktails] = useState([]);
+  const [search, setSearch] = useState("");
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
-    getAllCocktails();
-  }, []);
+    getAllCocktails(query).then((result) => {
+      setCocktails(result);
+    });
+  }, [query]);
 
-  const getAllCocktails = async () => {
-    const api = await fetch(
-      `https://www.thecocktaildb.com/api/json/v1/1/search.php?s`
-    );
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setQuery(search);
+  };
 
-    const data = await api.json();
-    setCocktails(data.drinks);
+  const updateSearch = (e) => {
+    setSearch(e.target.value);
   };
 
   return (
-    <CocktailList>
-      <Cocktail>
-        {cocktails.map((cocktail) => (
-          <CocktailCard key={cocktail.idDrink} cocktail={cocktail} />
-        ))}
-      </Cocktail>
-    </CocktailList>
+    <>
+      <HeaderComponent />
+      <Search
+        query={query}
+        search={search}
+        onSearch={handleSearch}
+        onUpdate={updateSearch}
+      />
+      <CocktailList>
+        <Cocktail>
+          {cocktails.map((cocktail) => (
+            <CocktailCard key={cocktail.idDrink} cocktail={cocktail} />
+          ))}
+        </Cocktail>
+      </CocktailList>
+    </>
   );
 }
 

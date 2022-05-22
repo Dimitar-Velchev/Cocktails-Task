@@ -3,22 +3,25 @@ import backgrd from "../img/backgrd.svg";
 import cow from "../img/cow.svg";
 import splash from "../img/splash.svg";
 
-function Search() {
+import Bubbles from "./Bubbles";
+
+function Search({onSearch,onUpdate,search}) {
   return (
     <StyledSearch>
+      <Bubbles />
       <div className="form-wrapper">
-       
-
         <h1>
           Find your favourite cocktail recipes and new ones to inspire you
         </h1>
-        <form className="form-field">
+        <form onSubmit={onSearch} className="form-field">
           <input
             type="text"
             className="search-input"
             placeholder="Insert a cocktail name"
+            value={search}
+            onChange={onUpdate}
           />
-          <button type="submit" className="search-btn">
+          <button  type="submit" className="search-btn">
             Search now
           </button>
         </form>

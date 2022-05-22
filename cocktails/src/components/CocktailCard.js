@@ -1,4 +1,4 @@
-//Styling and Animation
+
 import styled from "styled-components";
 
 const CocktailCard = ({ cocktail }) => {
@@ -23,10 +23,13 @@ const StyledCocktail = styled.div`
     height: 30vh;
     object-fit: cover;
   }
+  p{
+      font-size: 0.8rem;
+  }
   &:hover{
   box-shadow: 0px 5px 30px rgb(255, 194, 68);
-
   }
+
 `;
 
 export default CocktailCard;
