@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import { Redirect, Route } from "react-router-dom";
 
 import getRandomCocktail from "../services/getRandomCocktail";
-import styled from "styled-components";
+import styled from "styled-components"
+import LiquorIcon from '@mui/icons-material/Liquor';
+import CategoryIcon from '@mui/icons-material/Category';
+import WineBarIcon from '@mui/icons-material/WineBar';
 
 function Random() {
   const [random, setRandom] = useState([]);
@@ -26,11 +28,13 @@ function Random() {
       </div>
       <div className="info-container">
         <h1>{random.strDrink}</h1>
-        <h1>{random.strCategory}</h1>
-        <h1>{random.strAlcoholic}</h1>
-        <h1>{random.strGlass}</h1>
-        <h1>{random.strInstructions}</h1>
-        <p>
+        <div className="additional-info">
+          <h3><CategoryIcon /> {random.strCategory}</h3>
+          <h3><LiquorIcon /> {random.strAlcoholic}</h3>
+          <h3><WineBarIcon /> {random.strGlass}</h3>
+        </div>
+        <p>{random.strInstructions}</p>
+        <p className="reload">
           Not what you are looking for?{" "}
           <button onClick={handleResults}>Try again </button>
         </p>
@@ -68,7 +72,15 @@ const StyledDetails = styled.div`
   .info-container {
     flex: 2;
     margin-left: 2rem;
-
+    .additional-info{
+        display: flex;
+        width: 80%;
+        justify-content: space-between;
+        padding: 1rem;
+    }
+    .reload{
+        margin-top: 2rem;
+    }
   }
 `;
 

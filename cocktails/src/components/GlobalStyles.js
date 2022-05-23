@@ -27,12 +27,12 @@ h2{
 
 }
 h3{
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     padding: 1.5rem 0rem;
 }
 p{
     font-size: 1.2rem;
-    line-height: 200%;
+    line-height: 160%;
 }
 a{
     text-decoration: none;

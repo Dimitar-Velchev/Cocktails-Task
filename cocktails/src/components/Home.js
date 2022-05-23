@@ -34,6 +34,9 @@ const CocktailList = styled.div`
   h2 {
     padding: 5rem 0rem;
   }
+  p{
+    margin: 1rem;
+  }
 `;
 
 const Cocktail = styled.div`
