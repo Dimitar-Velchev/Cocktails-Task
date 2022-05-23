@@ -64,7 +64,7 @@ const StyledSearch = styled.div`
       input {
         padding: 0.8rem;
         border: none;
-        border-radius: 1rem;
+        border-radius: 0.5rem;
         box-shadow: 0px 0px 10px #888888;
         margin: 2rem 0.5rem;
         outline-color: rgb(68, 0, 99);

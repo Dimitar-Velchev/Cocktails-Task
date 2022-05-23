@@ -49,20 +49,20 @@ input{
 
 
 button{
-    font-size: 1rem;
-      color: rgb(255, 194, 68);
+    font-size: 0.8rem;
+      color: rgb(68, 0, 99);
       background: white;
-      border-color: rgb(255, 194, 68);
+      border-color: rgb(186, 182, 166);
       padding: 0.5rem;
-      border-radius: 1rem;
+      border-radius: 0.5rem;
       font-weight: 400;
       cursor: pointer;
 }
 
 button:hover {
-        border: 2px solid rgb(68, 0, 99);
+        border: 2px solid rgb(186, 182, 166);
         font-weight: 600;
-        color: rgb(255, 194, 68);
+
       }
 
 `;

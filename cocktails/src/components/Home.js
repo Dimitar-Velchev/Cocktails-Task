@@ -1,35 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { CocktailContext } from "../context/AuthContext";
+
 import styled from "styled-components";
 import CocktailCard from "./CocktailCard";
 
-import getAllCocktails from "../services/getAllCocktails";
-
-import HeaderComponent from "./Header";
 import Search from "./Search";
 
-function Home() {
-  const [cocktails, setCocktails] = useState([]);
-  const [search, setSearch] = useState("");
-  const [query, setQuery] = useState("");
-
-  useEffect(() => {
-    getAllCocktails(query).then((result) => {
-      setCocktails(result);
-    });
-  }, [query]);
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    setQuery(search);
-  };
-
-  const updateSearch = (e) => {
-    setSearch(e.target.value);
-  };
+function Home({ handleSearch, updateSearch, query, search }) {
+  const cocktails = useContext(CocktailContext);
 
   return (
     <>
-      <HeaderComponent />
       <Search
         query={query}
         search={search}
@@ -38,7 +19,7 @@ function Home() {
       />
       <CocktailList>
         <Cocktail>
-          {cocktails.map((cocktail) => (
+          {cocktails?.map((cocktail) => (
             <CocktailCard key={cocktail.idDrink} cocktail={cocktail} />
           ))}
         </Cocktail>
