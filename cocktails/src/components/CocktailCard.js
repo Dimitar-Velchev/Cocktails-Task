@@ -1,27 +1,36 @@
 import styled from "styled-components";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 //import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { useContext } from "react";
+import { CocktailContext } from "../context/AuthContext";
 
-const CocktailCard = ({ cocktail,handleFavorite }) => {
 
+const CocktailCard = ({ cocktail, handleFavorite }) => {
+  const { favs } = useContext(CocktailContext);
+  let addedFavs = favs.find(x => x.strDrink === cocktail.strDrink);
+  const btnDisabled = addedFavs ? true : false;
 
   return (
     <StyledCocktail>
       <h3>{cocktail.strDrink}</h3>
       <img src={cocktail.strDrinkThumb} alt="imageCocktail" />
       <p>{cocktail.strInstructions}</p>
-      <div onClick={()=>handleFavorite(cocktail)} className="overlay">
-        <span>Add to Favourites</span>
+      <button
+        onClick={() => handleFavorite(cocktail)}
+        className="overlay"
+        disabled={btnDisabled}
+      >
         <FavoriteIcon
           sx={{ color: "red", fontSize: 25, margin: 1 }}
         ></FavoriteIcon>
-      </div>
+      </button>
     </StyledCocktail>
   );
 };
 
 const StyledCocktail = styled.div`
   min-height: 30vh;
+  max-width: 360px;
   box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
   text-align: center;
   border-radius: 1rem;
@@ -40,7 +49,7 @@ const StyledCocktail = styled.div`
   h2 {
     padding: 5rem 0rem;
   }
- 
+
   position: relative;
 
   &:hover {
@@ -57,7 +66,6 @@ const StyledCocktail = styled.div`
 
   .overlay {
     position: absolute;
-    background-color: rgba(186, 182, 160, 0.3);
     width: 100%;
     transition: 0.5s ease;
     opacity: 0;
@@ -69,6 +77,11 @@ const StyledCocktail = styled.div`
     justify-content: flex-end;
     align-items: center;
     font-weight: bold;
+    font-size: 0.8rem;
+    border: none;
+    &:disabled{
+      opacity: 0.2;
+    }
   }
 `;
 

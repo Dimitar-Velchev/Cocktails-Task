@@ -53,7 +53,7 @@ const StyledSearch = styled.div`
     h1 {
       font-weight: 600;
       color: rgb(68, 0, 99);
-      margin: 2rem 0rem;
+      margin: 1rem 0rem 3rem 0rem;
     }
     .form-field {
       display: flex;

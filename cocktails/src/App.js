@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { CocktailContext } from "./context/AuthContext";
 import { getAllCocktails } from "./services/cocktailService";
 
+
 //Components
 import HeaderComponent from "./components/Header";
 import Home from "./components/Home";
@@ -33,7 +34,6 @@ function App() {
   const addFavorite = (cocktail) => {
     const newFavorites = [...favs, cocktail];
     setFavs(newFavorites);
-    
   };
 
   const handleSearch = (e) => {

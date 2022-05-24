@@ -8,9 +8,11 @@ function Favorite() {
 
   return (
     <CocktailList>
-      {favs.map((x) => (
-        <CocktailCard cocktail={x} />
-      ))}
+      {favs.length ? (
+        favs.map((x) => <CocktailCard key={x.strDrink} cocktail={x} />)
+      ) : (
+        <h1>You haven't added any favourite cocktails yet.</h1>
+      )}
     </CocktailList>
   );
 }
@@ -23,6 +25,10 @@ const CocktailList = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-column-gap: 3rem;
   grid-row-gap: 3rem;
+
+  h1{
+      margin: auto;
+  }
 `;
 
 export default Favorite;
