@@ -2,12 +2,13 @@ import { useContext } from "react";
 import { CocktailContext } from "../context/AuthContext";
 
 import styled from "styled-components";
+
 import CocktailCard from "./CocktailCard";
 
 import Search from "./Search";
 
-function Home({ handleSearch, updateSearch, query, search }) {
-  const cocktails = useContext(CocktailContext);
+function Home({ handleSearch, updateSearch, query, search, handleFavorite }) {
+  const { cocktails } = useContext(CocktailContext);
 
   return (
     <>
@@ -18,11 +19,13 @@ function Home({ handleSearch, updateSearch, query, search }) {
         onUpdate={updateSearch}
       />
       <CocktailList>
-        <Cocktail>
-          {cocktails?.map((cocktail) => (
-            <CocktailCard key={cocktail.idDrink} cocktail={cocktail} />
-          ))}
-        </Cocktail>
+        {cocktails.map((cocktail) => (
+          <CocktailCard
+            key={cocktail.idDrink}
+            cocktail={cocktail}
+            handleFavorite={handleFavorite}
+          />
+        ))}
       </CocktailList>
     </>
   );
@@ -31,15 +34,6 @@ function Home({ handleSearch, updateSearch, query, search }) {
 const CocktailList = styled.div`
   margin-top: 4rem;
   padding: 0rem 5rem;
-  h2 {
-    padding: 5rem 0rem;
-  }
-  p{
-    margin: 1rem;
-  }
-`;
-
-const Cocktail = styled.div`
   min-height: 80vh;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

@@ -2,7 +2,7 @@ import { Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { CocktailContext } from "./context/AuthContext";
-import getAllCocktails from "./services/getAllCocktails";
+import { getAllCocktails } from "./services/cocktailService";
 
 //Components
 import HeaderComponent from "./components/Header";
@@ -17,12 +17,24 @@ function App() {
   const [cocktails, setCocktails] = useState([]);
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState("");
+  const [favs, setFavs] = useState([]);
+
+  const values = {
+    cocktails,
+    favs
+  }
 
   useEffect(() => {
     getAllCocktails(query).then((result) => {
       setCocktails(result);
     });
   }, [query]);
+
+  const addFavorite = (cocktail) => {
+    const newFavorites = [...favs, cocktail];
+    setFavs(newFavorites);
+    
+  };
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -34,19 +46,24 @@ function App() {
     setSearch(e.target.value);
   };
 
-  const clearSearched = () =>{
+  const clearSearched = () => {
     getAllCocktails().then((result) => {
       setCocktails(result);
     });
-  
-  }
+  };
   return (
-    <CocktailContext.Provider value={cocktails}>
+    <CocktailContext.Provider value={values}>
       <div className="App">
         <GlobalStyles />
         <HeaderComponent clearSearched={clearSearched} />
         <Route path={"/"} exact>
-          <Home query={query} search={search} handleSearch={handleSearch} updateSearch={updateSearch}/>
+          <Home
+            query={query}
+            search={search}
+            handleSearch={handleSearch}
+            updateSearch={updateSearch}
+            handleFavorite={addFavorite}
+          />
         </Route>
         <Route path={"/fav"}>
           <Favorite />

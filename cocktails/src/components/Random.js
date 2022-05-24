@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
-import getRandomCocktail from "../services/getRandomCocktail";
-import styled from "styled-components"
-import LiquorIcon from '@mui/icons-material/Liquor';
-import CategoryIcon from '@mui/icons-material/Category';
-import WineBarIcon from '@mui/icons-material/WineBar';
+import {getRandomCocktail} from "../services/cocktailService";
+import styled from "styled-components";
+import LiquorIcon from "@mui/icons-material/Liquor";
+import CategoryIcon from "@mui/icons-material/Category";
+import WineBarIcon from "@mui/icons-material/WineBar";
 
 function Random() {
   const [random, setRandom] = useState([]);
@@ -29,9 +29,15 @@ function Random() {
       <div className="info-container">
         <h1>{random.strDrink}</h1>
         <div className="additional-info">
-          <h3><CategoryIcon /> {random.strCategory}</h3>
-          <h3><LiquorIcon /> {random.strAlcoholic}</h3>
-          <h3><WineBarIcon /> {random.strGlass}</h3>
+          <h3>
+            <CategoryIcon /> {random.strCategory}
+          </h3>
+          <h3>
+            <LiquorIcon /> {random.strAlcoholic}
+          </h3>
+          <h3>
+            <WineBarIcon /> {random.strGlass}
+          </h3>
         </div>
         <p>{random.strInstructions}</p>
         <p className="reload">
@@ -72,14 +78,14 @@ const StyledDetails = styled.div`
   .info-container {
     flex: 2;
     margin-left: 2rem;
-    .additional-info{
-        display: flex;
-        width: 80%;
-        justify-content: space-between;
-        padding: 1rem;
+    .additional-info {
+      display: flex;
+      width: 80%;
+      justify-content: space-between;
+      padding: 1rem;
     }
-    .reload{
-        margin-top: 2rem;
+    .reload {
+      margin-top: 2rem;
     }
   }
 `;
