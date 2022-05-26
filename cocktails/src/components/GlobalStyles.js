@@ -60,9 +60,7 @@ button{
 }
 
 button:hover:enabled {
-        border: 2px solid rgb(186, 182, 166);
         font-weight: 600;
-
       }
 
 `;
