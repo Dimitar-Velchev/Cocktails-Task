@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { CocktailContext } from "../context/AuthContext";
+import { CocktailContext } from "../context/CocktailContext";
 import styled from "styled-components";
 import CocktailCard from "./CocktailCard";
 
@@ -23,8 +23,8 @@ const CocktailList = styled.div`
   min-height: 40vh;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-column-gap: 3rem;
-  grid-row-gap: 3rem;
+  grid-column-gap: 2rem;
+  grid-row-gap: 2rem;
 
   h1{
       margin: auto;

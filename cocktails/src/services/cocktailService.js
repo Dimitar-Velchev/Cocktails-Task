@@ -19,5 +19,14 @@ const getAllCocktails = async (query = "") => {
     return data.drinks;
   };
   
-  export {getRandomCocktail,  getAllCocktails};
+  const getCocktailDetails = async (id) => {
+    const api = await fetch(
+      `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+    );
+  
+    const data = await api.json();
+    return data.drinks;
+  };
+  
+  export {getRandomCocktail,  getAllCocktails, getCocktailDetails};
   

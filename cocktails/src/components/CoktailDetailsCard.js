@@ -1,55 +1,52 @@
 import { useEffect, useState, useContext } from "react";
+import { useRouteMatch } from "react-router-dom";
 import { CocktailContext } from "../context/CocktailContext";
 
-import { getRandomCocktail } from "../services/cocktailService";
+import { getCocktailDetails } from "../services/cocktailService";
 import styled from "styled-components";
 import LiquorIcon from "@mui/icons-material/Liquor";
 import CategoryIcon from "@mui/icons-material/Category";
 import WineBarIcon from "@mui/icons-material/WineBar";
 
-function Random({ handleFavorite }) {
-  const [random, setRandom] = useState([]);
-
+function CocktailDetails({ handleFavorite }) {
   const { favs } = useContext(CocktailContext);
 
-  let addedFavs = favs.find((x) => x.strDrink === random.strDrink);
+  const [cocktail, setCocktail] = useState([]);
+  const match = useRouteMatch();
+
+  let addedFavs = favs.find((x) => x.strDrink === cocktail.strDrink);
   const btnDisabled = addedFavs ? true : false;
 
   useEffect(() => {
-    getRandomCocktail().then((result) => {
-      setRandom(result[0]);
+    getCocktailDetails(match.params.id).then((result) => {
+      setCocktail(result[0]);
     });
-  }, []);
-
-  const handleResults = () => {
-    getRandomCocktail().then((result) => {
-      setRandom(result[0]);
-    });
-  };
+  }, [match.params.id]);
 
   return (
     <StyledDetails className="details-container">
       <div className="img-container">
-        <img src={random.strDrinkThumb} alt="" />
+        <img src={cocktail.strDrinkThumb} alt="" />
       </div>
       <div className="info-container">
-        <h1>{random.strDrink}</h1>
+        <h1>{cocktail.strDrink}</h1>
         <div className="additional-info">
           <h3>
-            <CategoryIcon /> {random.strCategory}
+            <CategoryIcon /> {cocktail.strCategory}
           </h3>
           <h3>
-            <LiquorIcon /> {random.strAlcoholic}
+            <LiquorIcon /> {cocktail.strAlcoholic}
           </h3>
           <h3>
-            <WineBarIcon /> {random.strGlass}
+            <WineBarIcon /> {cocktail.strGlass}
           </h3>
         </div>
-        <p>{random.strInstructions}</p>
+        <p>{cocktail.strInstructions}</p>
         <p className="reload">
-          Not what you are looking for?{" "}
-          <button onClick={handleResults}>Try again </button>
-          <button onClick={() => handleFavorite(random)} disabled={btnDisabled}>
+          <button
+            onClick={() => handleFavorite(cocktail)}
+            disabled={btnDisabled}
+          >
             Add to favs
           </button>
         </p>
@@ -97,6 +94,9 @@ const StyledDetails = styled.div`
       margin-top: 2rem;
     }
   }
+  button  :hover{
+      
+  }
 `;
 
-export default Random;
+export default CocktailDetails;

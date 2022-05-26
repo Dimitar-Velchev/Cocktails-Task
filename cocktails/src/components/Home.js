@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { CocktailContext } from "../context/AuthContext";
+import { CocktailContext } from "../context/CocktailContext";
 
 import styled from "styled-components";
 

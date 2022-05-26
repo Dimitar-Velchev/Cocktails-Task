@@ -1,19 +1,24 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+
 import FavoriteIcon from "@mui/icons-material/Favorite";
 //import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { useContext } from "react";
-import { CocktailContext } from "../context/AuthContext";
-
+import { CocktailContext } from "../context/CocktailContext";
 
 const CocktailCard = ({ cocktail, handleFavorite }) => {
   const { favs } = useContext(CocktailContext);
-  let addedFavs = favs.find(x => x.strDrink === cocktail.strDrink);
+  let addedFavs = favs.find((x) => x.strDrink === cocktail.strDrink);
   const btnDisabled = addedFavs ? true : false;
 
   return (
     <StyledCocktail>
       <h3>{cocktail.strDrink}</h3>
-      <img src={cocktail.strDrinkThumb} alt="imageCocktail" />
+      <Link to={`/details/${cocktail.idDrink}`}>
+        {" "}
+        <img src={cocktail.strDrinkThumb} alt="imageCocktail" />
+      </Link>
+
       <p>{cocktail.strInstructions}</p>
       <button
         onClick={() => handleFavorite(cocktail)}
@@ -79,7 +84,7 @@ const StyledCocktail = styled.div`
     font-weight: bold;
     font-size: 0.8rem;
     border: none;
-    &:disabled{
+    &:disabled {
       opacity: 0.2;
     }
   }

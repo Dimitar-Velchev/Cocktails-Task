@@ -37,6 +37,7 @@ const StyledBubbles = styled.div`
     top: 30%;
     left: 55%;
     animation: animate 4s linear infinite;
+   pointer-events: none;
     .dot {
       height: 1rem;
       width: 1rem;

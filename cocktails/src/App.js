@@ -1,7 +1,7 @@
 import { Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import { CocktailContext } from "./context/AuthContext";
+import { CocktailContext } from "./context/CocktailContext";
 import { getAllCocktails } from "./services/cocktailService";
 
 
@@ -10,6 +10,7 @@ import HeaderComponent from "./components/Header";
 import Home from "./components/Home";
 import Favorite from "./components/Fav";
 import Random from "./components/Random";
+import CocktailDetails from "./components/CoktailDetailsCard";
 
 //CSS
 import GlobalStyles from "./components/GlobalStyles";
@@ -69,7 +70,10 @@ function App() {
           <Favorite />
         </Route>
         <Route path={"/random"}>
-          <Random />
+          <Random handleFavorite={addFavorite} />
+        </Route>
+        <Route path="/details/:id" exact>
+        <CocktailDetails handleFavorite={addFavorite} />
         </Route>
       </div>
     </CocktailContext.Provider>
