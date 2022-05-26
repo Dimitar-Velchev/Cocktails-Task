@@ -44,7 +44,7 @@ function CocktailDetails({ handleFavorite }) {
         <p>{cocktail.strInstructions}</p>
         <p className="reload">
           <button
-            onClick={() => handleFavorite(cocktail)}
+            onClick={() => handleFavorite( cocktail)}
             disabled={btnDisabled}
           >
             Add to favs
@@ -94,9 +94,7 @@ const StyledDetails = styled.div`
       margin-top: 2rem;
     }
   }
-  button  :hover{
-      
-  }
+ 
 `;
 
 export default CocktailDetails;

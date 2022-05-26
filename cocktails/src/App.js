@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { CocktailContext } from "./context/CocktailContext";
 import { getAllCocktails } from "./services/cocktailService";
 
-
 //Components
 import HeaderComponent from "./components/Header";
 import Home from "./components/Home";
@@ -23,8 +22,8 @@ function App() {
 
   const values = {
     cocktails,
-    favs
-  }
+    favs,
+  };
 
   useEffect(() => {
     getAllCocktails(query).then((result) => {
@@ -73,7 +72,7 @@ function App() {
           <Random handleFavorite={addFavorite} />
         </Route>
         <Route path="/details/:id" exact>
-        <CocktailDetails handleFavorite={addFavorite} />
+          <CocktailDetails handleFavorite={addFavorite} />
         </Route>
       </div>
     </CocktailContext.Provider>

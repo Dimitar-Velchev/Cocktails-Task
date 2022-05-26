@@ -63,6 +63,10 @@ button:hover:enabled {
         font-weight: 600;
       }
 
+button:hover:disabled{
+        cursor: auto;
+ }
+
 `;
 
 export default GlobalStyles;
