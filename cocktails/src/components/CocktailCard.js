@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
 
 import FavoriteIcon from "@mui/icons-material/Favorite";
-//import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { useContext } from "react";
 import { CocktailContext } from "../context/CocktailContext";
 
 const CocktailCard = ({ cocktail, handleFavorite }) => {
@@ -60,6 +59,7 @@ const StyledCocktail = styled.div`
   &:hover {
     box-shadow: 0px 5px 30px rgb(255, 194, 68);
     cursor: pointer;
+
     transform: scale(1.1);
     h3 {
       margin-top: 1.5rem;

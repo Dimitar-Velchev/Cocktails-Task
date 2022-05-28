@@ -1,11 +1,11 @@
-import { useContext } from "react";
-import { CocktailContext } from "../context/CocktailContext";
-
 import styled from "styled-components";
+import { useContext } from "react";
 
 import CocktailCard from "./CocktailCard";
-
 import Search from "./Search";
+
+import { CocktailContext } from "../context/CocktailContext";
+
 
 function Home({ handleSearch, updateSearch, query, search, handleFavorite }) {
   const { cocktails } = useContext(CocktailContext);

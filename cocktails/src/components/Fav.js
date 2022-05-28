@@ -1,7 +1,8 @@
-import { useContext } from "react";
-import { CocktailContext } from "../context/CocktailContext";
 import styled from "styled-components";
+import { useContext } from "react";
+
 import CocktailCard from "./CocktailCard";
+import { CocktailContext } from "../context/CocktailContext";
 
 function Favorite() {
   const { favs } = useContext(CocktailContext);

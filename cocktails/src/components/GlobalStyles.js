@@ -17,8 +17,7 @@ html{
 }
 body{
     font-family: 'Montserrat', sans-serif;
-    width: 100%;
-   
+    width: 100%;  
 }
 h2{
     font-size: 3rem;

@@ -1,11 +1,14 @@
-import { useEffect, useState, useContext } from "react";
-import { CocktailContext } from "../context/CocktailContext";
-
-import { getRandomCocktail } from "../services/cocktailService";
 import styled from "styled-components";
+import { useEffect, useState, useContext } from "react";
+
 import LiquorIcon from "@mui/icons-material/Liquor";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import ReplayIcon from "@mui/icons-material/Replay";
 import CategoryIcon from "@mui/icons-material/Category";
 import WineBarIcon from "@mui/icons-material/WineBar";
+
+import { CocktailContext } from "../context/CocktailContext";
+import { getRandomCocktail } from "../services/cocktailService";
 
 function Random({ handleFavorite }) {
   const [random, setRandom] = useState([]);
@@ -48,9 +51,18 @@ function Random({ handleFavorite }) {
         <p>{random.strInstructions}</p>
         <p className="reload">
           Not what you are looking for?{" "}
-          <button onClick={handleResults}>Try again </button>
-          <button onClick={() => handleFavorite(random)} disabled={btnDisabled}>
-            Add to favs
+          <button className="reload-btn" onClick={handleResults}>
+            {" "}
+            TRY AGAIN <ReplayIcon sx={{ fontSize: 20 }} />
+          </button>
+          <button
+            onClick={() => handleFavorite(random)}
+            className="overlay"
+            disabled={btnDisabled}
+          >
+            <FavoriteIcon
+              sx={{ color: "red", fontSize: 25, margin: 1 }}
+            ></FavoriteIcon>
           </button>
         </p>
       </div>
@@ -96,6 +108,35 @@ const StyledDetails = styled.div`
     .reload {
       margin-top: 2rem;
     }
+  }
+  .overlay {
+    position: absolute;
+    width: 60%;
+    transition: 0.5s ease;
+    opacity: 0.7;
+    top: 0;
+    right: 0;
+    padding: 0.1rem;
+    text-align: center;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border: none;
+    &:hover {
+      opacity: 1;
+      padding: 0.5rem;
+    }
+    &:disabled {
+      opacity: 0.2;
+      padding: 0.1rem;
+    }
+  }
+  .reload-btn {
+    border: none;
+    text-decoration: underline;
+    color: rgb(68, 0, 99);
+    font-size: 0.8rem;
+    font-weight: 700;
   }
 `;
 

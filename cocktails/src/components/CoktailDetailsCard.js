@@ -1,12 +1,14 @@
-import { useEffect, useState, useContext } from "react";
-import { useRouteMatch } from "react-router-dom";
-import { CocktailContext } from "../context/CocktailContext";
-
-import { getCocktailDetails } from "../services/cocktailService";
 import styled from "styled-components";
+import { useRouteMatch } from "react-router-dom";
+import { useEffect, useState, useContext } from "react";
+
 import LiquorIcon from "@mui/icons-material/Liquor";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import CategoryIcon from "@mui/icons-material/Category";
 import WineBarIcon from "@mui/icons-material/WineBar";
+
+import { getCocktailDetails } from "../services/cocktailService";
+import { CocktailContext } from "../context/CocktailContext";
 
 function CocktailDetails({ handleFavorite }) {
   const { favs } = useContext(CocktailContext);
@@ -44,10 +46,13 @@ function CocktailDetails({ handleFavorite }) {
         <p>{cocktail.strInstructions}</p>
         <p className="reload">
           <button
-            onClick={() => handleFavorite( cocktail)}
+            onClick={() => handleFavorite(cocktail)}
+            className="overlay"
             disabled={btnDisabled}
           >
-            Add to favs
+            <FavoriteIcon
+              sx={{ color: "red", fontSize: 25, margin: 1 }}
+            ></FavoriteIcon>
           </button>
         </p>
       </div>
@@ -84,6 +89,7 @@ const StyledDetails = styled.div`
   .info-container {
     flex: 2;
     margin-left: 2rem;
+
     .additional-info {
       display: flex;
       width: 80%;
@@ -94,7 +100,30 @@ const StyledDetails = styled.div`
       margin-top: 2rem;
     }
   }
- 
+  .overlay {
+    position: absolute;
+    width: 60%;
+    transition: 0.5s ease;
+    opacity: 0.7;
+    top: 0;
+    right: 0;
+    padding: 0.1rem;
+    text-align: center;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    /* font-weight: bold; */
+    border: none;
+    &:hover {
+      opacity: 1;
+      padding: 0.5rem;
+    }
+    &:disabled {
+      opacity: 0.2;
+      padding: 0.1rem;
+
+    }
+  }
 `;
 
 export default CocktailDetails;

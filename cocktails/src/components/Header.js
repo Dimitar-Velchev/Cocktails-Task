@@ -1,12 +1,7 @@
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-//import { useEffect, useState } from "react";
-import styled from "styled-components";
 import LocalBarIcon from "@mui/icons-material/LocalBar";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import SportsBarIcon from "@mui/icons-material/SportsBar";
-//import Random from "./Random";
-//import getAllCocktails from "../services/getAllCocktails";
 
 function Header({ clearSearched }) {
   return (
@@ -62,7 +57,6 @@ const StyledHeader = styled.header`
     }
   }
   nav {
-    /* background-color: rgb(0, 160, 130); */
     flex: 2;
     margin-right: 2rem;
     font-weight: 500;
