@@ -2,14 +2,15 @@ import styled from "styled-components";
 import { useContext } from "react";
 
 import CocktailCard from "./CocktailCard";
-import { CocktailContext } from "../context/CocktailContext";
+import { CocktailContext } from "../context/AuthContext";
 
 function Favorite() {
   const { favs } = useContext(CocktailContext);
 
+ 
   return (
     <CocktailList>
-      {favs.length ? (
+      {(favs !=null) && favs.length ? (
         favs.map((x) => <CocktailCard key={x.strDrink} cocktail={x} />)
       ) : (
         <h1>You haven't added any favourite cocktails yet.</h1>
@@ -27,8 +28,8 @@ const CocktailList = styled.div`
   grid-column-gap: 2rem;
   grid-row-gap: 2rem;
 
-  h1{
-      margin: auto;
+  h1 {
+    margin: auto;
   }
 `;
 

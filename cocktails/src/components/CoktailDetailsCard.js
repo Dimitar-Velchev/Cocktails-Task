@@ -8,7 +8,7 @@ import CategoryIcon from "@mui/icons-material/Category";
 import WineBarIcon from "@mui/icons-material/WineBar";
 
 import { getCocktailDetails } from "../services/cocktailService";
-import { CocktailContext } from "../context/CocktailContext";
+import { CocktailContext } from "../context/AuthContext";
 
 function CocktailDetails({ handleFavorite }) {
   const { favs } = useContext(CocktailContext);
@@ -16,7 +16,7 @@ function CocktailDetails({ handleFavorite }) {
   const [cocktail, setCocktail] = useState([]);
   const match = useRouteMatch();
 
-  let addedFavs = favs.find((x) => x.strDrink === cocktail.strDrink);
+  let addedFavs = favs.find((x) => x.idDrink === cocktail.idDrink);
   const btnDisabled = addedFavs ? true : false;
 
   useEffect(() => {

@@ -1,7 +1,7 @@
 import { Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import { CocktailContext } from "./context/CocktailContext";
+import { CocktailContext } from "./context/AuthContext";
 import { getAllCocktails } from "./services/cocktailService";
 
 //Components
@@ -32,21 +32,25 @@ function App() {
   }, [query]);
 
   useEffect(() => {
-    const favoriteCocktail = JSON.parse(
-      localStorage.getItem("react-cocktail-app")
-    );
-    setFavs(favoriteCocktail);
-  },[]);
+    const favourites = JSON.parse(localStorage.getItem('react-cocktail-app'))
+    favourites ? setFavs(favourites) : setFavs([]);
+      
+  }, []);
+
+
 
   const saveToLocalStorage = (items) => {
     localStorage.setItem("react-cocktail-app", JSON.stringify(items));
   };
 
   const addFavorite = (cocktail) => {
-    const newFavorites = [...favs, cocktail];
-    setFavs(newFavorites);
-    saveToLocalStorage(newFavorites);
+    const newFavoriteList = [...favs, cocktail];
+    setFavs(newFavoriteList);
+
+    saveToLocalStorage(newFavoriteList);
   };
+
+
 
   const handleSearch = (e) => {
     e.preventDefault();

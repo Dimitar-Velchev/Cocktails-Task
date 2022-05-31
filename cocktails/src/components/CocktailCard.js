@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { CocktailContext } from "../context/CocktailContext";
+import { CocktailContext } from "../context/AuthContext";
 
 const CocktailCard = ({ cocktail, handleFavorite }) => {
   const { favs } = useContext(CocktailContext);
+  
   let addedFavs = favs.find((x) => x.idDrink === cocktail.idDrink);
   const btnDisabled = addedFavs ? true : false;
 

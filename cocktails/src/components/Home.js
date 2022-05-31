@@ -4,7 +4,7 @@ import { useContext } from "react";
 import CocktailCard from "./CocktailCard";
 import Search from "./Search";
 
-import { CocktailContext } from "../context/CocktailContext";
+import { CocktailContext } from "../context/AuthContext";
 
 
 function Home({ handleSearch, updateSearch, query, search, handleFavorite }) {

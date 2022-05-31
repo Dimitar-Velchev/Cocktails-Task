@@ -7,7 +7,7 @@ import ReplayIcon from "@mui/icons-material/Replay";
 import CategoryIcon from "@mui/icons-material/Category";
 import WineBarIcon from "@mui/icons-material/WineBar";
 
-import { CocktailContext } from "../context/CocktailContext";
+import { CocktailContext } from "../context/AuthContext";
 import { getRandomCocktail } from "../services/cocktailService";
 
 function Random({ handleFavorite }) {
@@ -15,7 +15,7 @@ function Random({ handleFavorite }) {
 
   const { favs } = useContext(CocktailContext);
 
-  let addedFavs = favs.find((x) => x.idDrink === random.idDrink);
+  let addedFavs = favs?.find((x) => x.idDrink === random.idDrink);
   const btnDisabled = addedFavs ? true : false;
 
   useEffect(() => {
