@@ -31,9 +31,21 @@ function App() {
     });
   }, [query]);
 
+  useEffect(() => {
+    const favoriteCocktail = JSON.parse(
+      localStorage.getItem("react-cocktail-app")
+    );
+    setFavs(favoriteCocktail);
+  },[]);
+
+  const saveToLocalStorage = (items) => {
+    localStorage.setItem("react-cocktail-app", JSON.stringify(items));
+  };
+
   const addFavorite = (cocktail) => {
     const newFavorites = [...favs, cocktail];
     setFavs(newFavorites);
+    saveToLocalStorage(newFavorites);
   };
 
   const handleSearch = (e) => {

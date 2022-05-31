@@ -7,7 +7,7 @@ import { CocktailContext } from "../context/CocktailContext";
 
 const CocktailCard = ({ cocktail, handleFavorite }) => {
   const { favs } = useContext(CocktailContext);
-  let addedFavs = favs.find((x) => x.strDrink === cocktail.strDrink);
+  let addedFavs = favs.find((x) => x.idDrink === cocktail.idDrink);
   const btnDisabled = addedFavs ? true : false;
 
   return (
