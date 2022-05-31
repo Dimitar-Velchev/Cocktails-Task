@@ -32,12 +32,9 @@ function App() {
   }, [query]);
 
   useEffect(() => {
-    const favourites = JSON.parse(localStorage.getItem('react-cocktail-app'))
+    const favourites = JSON.parse(localStorage.getItem("react-cocktail-app"));
     favourites ? setFavs(favourites) : setFavs([]);
-      
   }, []);
-
-
 
   const saveToLocalStorage = (items) => {
     localStorage.setItem("react-cocktail-app", JSON.stringify(items));
@@ -50,7 +47,7 @@ function App() {
     saveToLocalStorage(newFavoriteList);
   };
 
-
+  
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -67,6 +64,16 @@ function App() {
       setCocktails(result);
     });
   };
+
+  const removeFavoriteCocktail = (cocktail) => {
+    const newFavoriteList = favs.filter(
+      (fav) => fav.idDrink !== cocktail.idDrink
+    );
+
+    setFavs(newFavoriteList);
+    saveToLocalStorage(newFavoriteList);
+  };
+
   return (
     <CocktailContext.Provider value={values}>
       <div className="App">
@@ -79,10 +86,12 @@ function App() {
             handleSearch={handleSearch}
             updateSearch={updateSearch}
             handleFavorite={addFavorite}
+            removeFavorite={removeFavoriteCocktail}
           />
         </Route>
-        <Route path={"/fav"}>
-          <Favorite />
+  
+        <Route path={"/fav"} >
+          <Favorite removeFavorite={removeFavoriteCocktail} />
         </Route>
         <Route path={"/random"}>
           <Random handleFavorite={addFavorite} />

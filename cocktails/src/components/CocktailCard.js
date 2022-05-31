@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+
 import { CocktailContext } from "../context/AuthContext";
 
-const CocktailCard = ({ cocktail, handleFavorite }) => {
+const CocktailCard = ({ cocktail, handleFavorite, removeFavorite }) => {
   const { favs } = useContext(CocktailContext);
-  
+
   let addedFavs = favs.find((x) => x.idDrink === cocktail.idDrink);
   const btnDisabled = addedFavs ? true : false;
 
@@ -20,15 +22,16 @@ const CocktailCard = ({ cocktail, handleFavorite }) => {
       </Link>
 
       <p>{cocktail.strInstructions}</p>
-      <button
-        onClick={() => handleFavorite(cocktail)}
-        className="overlay"
-        disabled={btnDisabled}
-      >
-        <FavoriteIcon
-          sx={{ color: "red", fontSize: 25, margin: 1 }}
-        ></FavoriteIcon>
-      </button>
+      <div className="overlay">
+        <button  className="addBtn" onClick={() => handleFavorite(cocktail)} disabled={btnDisabled}>
+          <FavoriteIcon
+            sx={{ color: "red", fontSize: 25, margin: 1 }}
+          ></FavoriteIcon>
+        </button>
+        {btnDisabled ? <button className="removeBtn" onClick={() => removeFavorite(cocktail)}>
+          <HighlightOffIcon />
+        </button> : ''} 
+      </div>
     </StyledCocktail>
   );
 };
@@ -85,6 +88,13 @@ const StyledCocktail = styled.div`
     font-weight: bold;
     font-size: 0.8rem;
     border: none;
+  
+  }
+  .removeBtn, .addBtn {
+    border: none;
+    &:hover {
+      opacity: 1;
+    }
     &:disabled {
       opacity: 0.2;
     }

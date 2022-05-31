@@ -7,7 +7,7 @@ import Search from "./Search";
 import { CocktailContext } from "../context/AuthContext";
 
 
-function Home({ handleSearch, updateSearch, query, search, handleFavorite }) {
+function Home({ handleSearch, updateSearch, query, search, handleFavorite,removeFavorite }) {
   const { cocktails } = useContext(CocktailContext);
 
   return (
@@ -24,6 +24,7 @@ function Home({ handleSearch, updateSearch, query, search, handleFavorite }) {
             key={cocktail.idDrink}
             cocktail={cocktail}
             handleFavorite={handleFavorite}
+            removeFavorite={removeFavorite}
           />
         ))}
       </CocktailList>

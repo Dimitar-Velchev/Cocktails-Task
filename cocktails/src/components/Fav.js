@@ -4,14 +4,13 @@ import { useContext } from "react";
 import CocktailCard from "./CocktailCard";
 import { CocktailContext } from "../context/AuthContext";
 
-function Favorite() {
+function Favorite({removeFavorite}) {
   const { favs } = useContext(CocktailContext);
 
- 
   return (
     <CocktailList>
-      {(favs !=null) && favs.length ? (
-        favs.map((x) => <CocktailCard key={x.strDrink} cocktail={x} />)
+      {favs.length ? (
+        favs.map((x) => <CocktailCard removeFavorite={removeFavorite} key={x.idDrink} cocktail={x} />)
       ) : (
         <h1>You haven't added any favourite cocktails yet.</h1>
       )}
