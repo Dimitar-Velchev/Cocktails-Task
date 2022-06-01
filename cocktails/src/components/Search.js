@@ -10,9 +10,9 @@ function Search({ onSearch, onUpdate, search }) {
     <StyledSearch>
       <Bubbles />
       <StyledFormWraper className="form-wrapper">
-        <h1>
+        <StyledHeader>
           Find your favourite cocktail recipes and new ones to inspire you
-        </h1>
+        </StyledHeader>
         <StyledFormFiled onSubmit={onSearch} className="form-field">
           <StyledInput
             type="text"
@@ -43,11 +43,7 @@ const StyledFormWraper = styled.div`
   justify-content: center;
   margin: 2rem 8rem;
 
-  h1 {
-    font-weight: 600;
-    color: rgb(68, 0, 99);
-    margin: 1rem 0rem 3rem 0rem;
-  }
+  
 `;
 
 const StyledFormFiled = styled.form`
@@ -59,7 +55,7 @@ const StyledFormFiled = styled.form`
 `;
 
 const StyledInput = styled.input`
-  padding: 0.8rem;
+  padding: 0.6rem;
   border: none;
   border-radius: 0.5rem;
   box-shadow: 0px 0px 10px #888888;
@@ -75,12 +71,12 @@ const StyledButton = styled.button`
   box-shadow: 0px 0px 10px #888888;
   width: 60%;
   margin: 0rem 0rem 2rem;
-  
+  font-family: 'Montserrat', sans-serif;
   font-size: 0.8rem;
   color: rgb(68, 0, 99);
   background: white;
   border: 2px solid rgb(186, 182, 166);
-  padding: 0.5rem;
+  padding: 0.6rem;
   border-radius: 0.5rem;
   font-weight: 400;
   cursor: pointer;
@@ -101,4 +97,9 @@ const StyledSearch = styled.div`
    }
   `;
 
+const StyledHeader = styled.h1`
+font-weight: 600;
+color: rgb(68, 0, 99);
+margin: 1rem 0rem 3rem 0rem;
+`
 export default Search;

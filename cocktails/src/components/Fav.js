@@ -4,15 +4,21 @@ import { useContext } from "react";
 import CocktailCard from "./CocktailCard";
 import { CocktailContext } from "../context/AuthContext";
 
-function Favorite({removeFavorite}) {
+function Favorite({ removeFavorite }) {
   const { favs } = useContext(CocktailContext);
 
   return (
     <CocktailList>
       {favs.length ? (
-        favs.map((x) => <CocktailCard removeFavorite={removeFavorite} key={x.idDrink} cocktail={x} />)
+        favs.map((x) => (
+          <CocktailCard
+            removeFavorite={removeFavorite}
+            key={x.idDrink}
+            cocktail={x}
+          />
+        ))
       ) : (
-        <h1>You haven't added any favourite cocktails yet.</h1>
+        <StyledInfo>You haven't added any favourite cocktails yet.</StyledInfo>
       )}
     </CocktailList>
   );
@@ -26,10 +32,10 @@ const CocktailList = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-column-gap: 2rem;
   grid-row-gap: 2rem;
+`;
 
-  h1 {
-    margin: auto;
-  }
+const StyledInfo = styled.h1`
+  margin: auto;
 `;
 
 export default Favorite;

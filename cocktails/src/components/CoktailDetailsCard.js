@@ -33,18 +33,18 @@ function CocktailDetails({ handleFavorite }) {
       <StyledInfoContainer className="info-container">
         <h1>{cocktail.strDrink}</h1>
         <StyledAditionalContainer className="additional-info">
-          <h3>
+          <StyledInfo>
             <CategoryIcon /> {cocktail.strCategory}
-          </h3>
-          <h3>
+          </StyledInfo>
+          <StyledInfo>
             <LiquorIcon /> {cocktail.strAlcoholic}
-          </h3>
-          <h3>
+          </StyledInfo>
+          <StyledInfo>
             <WineBarIcon /> {cocktail.strGlass}
-          </h3>
+          </StyledInfo>
         </StyledAditionalContainer>
-        <p>{cocktail.strInstructions}</p>
-        <p className="reload">
+        <StyledInsturction>{cocktail.strInstructions}</StyledInsturction>
+        <StyledInsturction className="reload">
           <StyledButton
             onClick={() => handleFavorite(cocktail)}
             className="overlay"
@@ -54,12 +54,11 @@ function CocktailDetails({ handleFavorite }) {
               sx={{ color: "red", fontSize: 25, margin: 1 }}
             ></FavoriteIcon>
           </StyledButton>
-        </p>
+        </StyledInsturction>
       </StyledInfoContainer>
     </StyledDetails>
   );
 }
-
 
 const StyledDetails = styled.div`
   display: flex;
@@ -99,7 +98,6 @@ const StyledButton = styled.button`
   &:hover {
     opacity: 1;
     padding: 0.5rem;
-    
   }
   &:disabled {
     opacity: 0.2;
@@ -112,6 +110,18 @@ const StyledImageCointeiner = styled.div`
   flex: 1;
 `;
 
+const StyledInfo = styled.h3`
+  font-size: 1.2rem;
+  padding: 1.5rem 0rem;
+`;
+
+const StyledInsturction = styled.p`
+  font-size: 1.2rem;
+  line-height: 160%;
+  font-size: 1rem;
+  margin: 1rem;
+`;
+
 const StyledImage = styled.img`
   width: 400px;
   height: 500px;
@@ -119,7 +129,6 @@ const StyledImage = styled.img`
   border-radius: 10px;
   box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
 `;
-
 
 const StyledAditionalContainer = styled.div`
   display: flex;
@@ -131,8 +140,5 @@ const StyledAditionalContainer = styled.div`
     margin-top: 2rem;
   }
 `;
-
-
-
 
 export default CocktailDetails;

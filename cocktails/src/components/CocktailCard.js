@@ -15,13 +15,13 @@ const CocktailCard = ({ cocktail, handleFavorite, removeFavorite }) => {
 
   return (
     <StyledCocktail>
-      <h3>{cocktail.strDrink}</h3>
+      <StyleTitle>{cocktail.strDrink}</StyleTitle>
       <Link to={`/details/${cocktail.idDrink}`}>
         {" "}
         <StyledImg src={cocktail.strDrinkThumb} alt="imageCocktail" />
       </Link>
 
-      <p>{cocktail.strInstructions}</p>
+      <StyleInstruction>{cocktail.strInstructions}</StyleInstruction>
       <StyledOverleyDiv className="overlay">
         <StyledButton
           className="addBtn"
@@ -62,15 +62,24 @@ const StyledCocktail = styled.div`
     cursor: pointer;
 
     transform: scale(1.1);
-    h3 {
-      margin-top: 1.5rem;
-    }
   }
   &:hover .overlay {
     opacity: 1;
   }
 `;
 
+const StyleTitle = styled.h3`
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  padding: 1.5rem 0rem;
+`;
+
+const StyleInstruction = styled.p`
+  font-size: 1.2rem;
+  line-height: 160%;
+  font-size: 0.8rem;
+  margin: 1rem;
+`;
 
 const StyledOverleyDiv = styled.div`
   position: absolute;
@@ -87,7 +96,6 @@ const StyledOverleyDiv = styled.div`
   font-weight: bold;
   font-size: 0.8rem;
   border: none;
-
 `;
 
 const StyledButton = styled.button`
@@ -107,7 +115,5 @@ const StyledImg = styled.img`
   height: 30vh;
   object-fit: cover;
 `;
-
-
 
 export default CocktailCard;

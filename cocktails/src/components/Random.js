@@ -38,18 +38,18 @@ function Random({ handleFavorite }) {
       <InfoConteiner className="info-container">
         <h1>{random.strDrink}</h1>
         <div className="additional-info">
-          <h3>
+          <StyledInfo>
             <CategoryIcon /> {random.strCategory}
-          </h3>
-          <h3>
+          </StyledInfo>
+          <StyledInfo>
             <LiquorIcon /> {random.strAlcoholic}
-          </h3>
-          <h3>
+          </StyledInfo>
+          <StyledInfo>
             <WineBarIcon /> {random.strGlass}
-          </h3>
+          </StyledInfo>
         </div>
-        <p>{random.strInstructions}</p>
-        <p className="reload">
+        <StyledInstruction>{random.strInstructions}</StyledInstruction>
+        <StyledInstruction className="reload">
           Not what you are looking for?{" "}
           <StyledReloadBtn className="reload-btn" onClick={handleResults}>
             {" "}
@@ -64,7 +64,7 @@ function Random({ handleFavorite }) {
               sx={{ color: "red", fontSize: 25, margin: 1 }}
             ></FavoriteIcon>
           </StyledOverlayBtn>
-        </p>
+        </StyledInstruction>
       </InfoConteiner>
     </StyledDetails>
   );
@@ -136,7 +136,17 @@ const StyledOverlayBtn = styled.button`
   }
 `;
 
+const StyledInfo = styled.h3`
+  font-size: 1.2rem;
+  padding: 1.5rem 0rem;
+`;
 
+const StyledInstruction = styled.p`
+ font-size: 1.2rem;
+    line-height: 160%;
+    font-size: 0.9rem;
+    margin: 1rem;
+`;
 
 const StyledReloadBtn = styled.button`
   border: none;

@@ -20,16 +20,6 @@ body{
     width: 100%;  
 }
 
-h3{
-    font-size: 1.2rem;
-    padding: 1.5rem 0rem;
-}
-p{
-    font-size: 1.2rem;
-    line-height: 160%;
-    font-size: 0.8rem;
-    margin: 1rem;
-}
 a{
     text-decoration: none;
 }
