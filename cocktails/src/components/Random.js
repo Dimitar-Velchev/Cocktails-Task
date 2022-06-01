@@ -32,10 +32,10 @@ function Random({ handleFavorite }) {
 
   return (
     <StyledDetails className="details-container">
-      <div className="img-container">
+      <StyledImageConteiner className="img-container">
         <img src={random.strDrinkThumb} alt="" />
-      </div>
-      <div className="info-container">
+      </StyledImageConteiner>
+      <InfoConteiner className="info-container">
         <h1>{random.strDrink}</h1>
         <div className="additional-info">
           <h3>
@@ -51,11 +51,11 @@ function Random({ handleFavorite }) {
         <p>{random.strInstructions}</p>
         <p className="reload">
           Not what you are looking for?{" "}
-          <button className="reload-btn" onClick={handleResults}>
+          <StyledReloadBtn className="reload-btn" onClick={handleResults}>
             {" "}
             TRY AGAIN <ReplayIcon sx={{ fontSize: 20 }} />
-          </button>
-          <button
+          </StyledReloadBtn>
+          <StyledOverlayBtn
             onClick={() => handleFavorite(random)}
             className="overlay"
             disabled={btnDisabled}
@@ -63,13 +63,12 @@ function Random({ handleFavorite }) {
             <FavoriteIcon
               sx={{ color: "red", fontSize: 25, margin: 1 }}
             ></FavoriteIcon>
-          </button>
+          </StyledOverlayBtn>
         </p>
-      </div>
+      </InfoConteiner>
     </StyledDetails>
   );
 }
-
 const StyledDetails = styled.div`
   display: flex;
   justify-content: center;
@@ -83,61 +82,71 @@ const StyledDetails = styled.div`
   top: 20%;
   left: 10%;
   color: black;
+`;
 
-  .img-container {
-    min-height: 60vh;
-    flex: 1;
+const StyledImageConteiner = styled.div`
+  min-height: 60vh;
+  flex: 1;
 
-    img {
-      width: 400px;
-      height: 500px;
-      object-fit: cover;
-      border-radius: 10px;
-      box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
-    }
+  img {
+    width: 400px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
   }
-  .info-container {
-    flex: 2;
-    margin-left: 2rem;
-    .additional-info {
-      display: flex;
-      width: 80%;
-      justify-content: space-between;
-      padding: 1rem;
-    }
-    .reload {
-      margin-top: 2rem;
-    }
-  }
-  .overlay {
-    position: absolute;
-    width: 60%;
-    transition: 0.5s ease;
-    opacity: 0.7;
-    top: 0;
-    right: 0;
-    padding: 0.1rem;
-    text-align: center;
+`;
+
+const InfoConteiner = styled.div`
+  flex: 2;
+  margin-left: 2rem;
+  .additional-info {
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    border: none;
-    &:hover {
-      opacity: 1;
-      padding: 0.5rem;
-    }
-    &:disabled {
-      opacity: 0.2;
-      padding: 0.1rem;
-    }
+    width: 80%;
+    justify-content: space-between;
+    padding: 1rem;
   }
-  .reload-btn {
-    border: none;
-    text-decoration: underline;
-    color: rgb(68, 0, 99);
-    font-size: 0.8rem;
-    font-weight: 700;
+  .reload {
+    margin-top: 2rem;
   }
+`;
+
+const StyledOverlayBtn = styled.button`
+  position: absolute;
+  width: 60%;
+  transition: 0.5s ease;
+  opacity: 0.7;
+  top: 0;
+  right: 0;
+  padding: 0.1rem;
+  text-align: center;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border: none;
+  background: white;
+  cursor: pointer;
+  &:hover {
+    opacity: 1;
+    padding: 0.5rem;
+  }
+  &:disabled {
+    opacity: 0.2;
+    padding: 0.1rem;
+  }
+`;
+
+
+
+const StyledReloadBtn = styled.button`
+  border: none;
+  text-decoration: underline;
+  color: rgb(68, 0, 99);
+  font-size: 0.8rem;
+  font-weight: 700;
+
+  background: white;
+  cursor: pointer;
 `;
 
 export default Random;

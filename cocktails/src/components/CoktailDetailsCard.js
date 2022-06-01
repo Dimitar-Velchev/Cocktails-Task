@@ -27,12 +27,12 @@ function CocktailDetails({ handleFavorite }) {
 
   return (
     <StyledDetails className="details-container">
-      <div className="img-container">
-        <img src={cocktail.strDrinkThumb} alt="" />
-      </div>
-      <div className="info-container">
+      <StyledImageCointeiner className="img-container">
+        <StyledImage src={cocktail.strDrinkThumb} alt="coctailImage" />
+      </StyledImageCointeiner>
+      <StyledInfoContainer className="info-container">
         <h1>{cocktail.strDrink}</h1>
-        <div className="additional-info">
+        <StyledAditionalContainer className="additional-info">
           <h3>
             <CategoryIcon /> {cocktail.strCategory}
           </h3>
@@ -42,10 +42,10 @@ function CocktailDetails({ handleFavorite }) {
           <h3>
             <WineBarIcon /> {cocktail.strGlass}
           </h3>
-        </div>
+        </StyledAditionalContainer>
         <p>{cocktail.strInstructions}</p>
         <p className="reload">
-          <button
+          <StyledButton
             onClick={() => handleFavorite(cocktail)}
             className="overlay"
             disabled={btnDisabled}
@@ -53,12 +53,13 @@ function CocktailDetails({ handleFavorite }) {
             <FavoriteIcon
               sx={{ color: "red", fontSize: 25, margin: 1 }}
             ></FavoriteIcon>
-          </button>
+          </StyledButton>
         </p>
-      </div>
+      </StyledInfoContainer>
     </StyledDetails>
   );
 }
+
 
 const StyledDetails = styled.div`
   display: flex;
@@ -73,57 +74,65 @@ const StyledDetails = styled.div`
   top: 20%;
   left: 10%;
   color: black;
+`;
 
-  .img-container {
-    min-height: 60vh;
-    flex: 1;
+const StyledInfoContainer = styled.div`
+  flex: 2;
+  margin-left: 2rem;
+`;
 
-    img {
-      width: 400px;
-      height: 500px;
-      object-fit: cover;
-      border-radius: 10px;
-      box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
-    }
+const StyledButton = styled.button`
+  position: absolute;
+  width: 60%;
+  transition: 0.5s ease;
+  opacity: 0.7;
+  top: 0;
+  right: 0;
+  padding: 0.1rem;
+  text-align: center;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border: none;
+  background: white;
+  cursor: pointer;
+  &:hover {
+    opacity: 1;
+    padding: 0.5rem;
+    
   }
-  .info-container {
-    flex: 2;
-    margin-left: 2rem;
-
-    .additional-info {
-      display: flex;
-      width: 80%;
-      justify-content: space-between;
-      padding: 1rem;
-    }
-    .reload {
-      margin-top: 2rem;
-    }
-  }
-  .overlay {
-    position: absolute;
-    width: 60%;
-    transition: 0.5s ease;
-    opacity: 0.7;
-    top: 0;
-    right: 0;
+  &:disabled {
+    opacity: 0.2;
     padding: 0.1rem;
-    text-align: center;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    /* font-weight: bold; */
-    border: none;
-    &:hover {
-      opacity: 1;
-      padding: 0.5rem;
-    }
-    &:disabled {
-      opacity: 0.2;
-      padding: 0.1rem;
-
-    }
   }
 `;
+
+const StyledImageCointeiner = styled.div`
+  min-height: 60vh;
+  flex: 1;
+`;
+
+const StyledImage = styled.img`
+  width: 400px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
+`;
+
+
+const StyledAditionalContainer = styled.div`
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  padding: 1rem;
+
+  .reload {
+    margin-top: 2rem;
+  }
+`;
+
+
+
 
 export default CocktailDetails;

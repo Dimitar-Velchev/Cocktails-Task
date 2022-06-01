@@ -18,20 +18,31 @@ const CocktailCard = ({ cocktail, handleFavorite, removeFavorite }) => {
       <h3>{cocktail.strDrink}</h3>
       <Link to={`/details/${cocktail.idDrink}`}>
         {" "}
-        <img src={cocktail.strDrinkThumb} alt="imageCocktail" />
+        <StyledImg src={cocktail.strDrinkThumb} alt="imageCocktail" />
       </Link>
 
       <p>{cocktail.strInstructions}</p>
-      <div className="overlay">
-        <button  className="addBtn" onClick={() => handleFavorite(cocktail)} disabled={btnDisabled}>
+      <StyledOverleyDiv className="overlay">
+        <StyledButton
+          className="addBtn"
+          onClick={() => handleFavorite(cocktail)}
+          disabled={btnDisabled}
+        >
           <FavoriteIcon
             sx={{ color: "red", fontSize: 25, margin: 1 }}
           ></FavoriteIcon>
-        </button>
-        {btnDisabled ? <button className="removeBtn" onClick={() => removeFavorite(cocktail)}>
-          <HighlightOffIcon />
-        </button> : ''} 
-      </div>
+        </StyledButton>
+        {btnDisabled ? (
+          <StyledButton
+            className="removeBtn"
+            onClick={() => removeFavorite(cocktail)}
+          >
+            <HighlightOffIcon />
+          </StyledButton>
+        ) : (
+          ""
+        )}
+      </StyledOverleyDiv>
     </StyledCocktail>
   );
 };
@@ -44,20 +55,6 @@ const StyledCocktail = styled.div`
   border-radius: 1rem;
   cursor: pointer;
   overflow: hidden;
-
-  img {
-    width: 100%;
-    height: 30vh;
-    object-fit: cover;
-  }
-  p {
-    font-size: 0.8rem;
-    margin: 1rem;
-  }
-  h2 {
-    padding: 5rem 0rem;
-  }
-
   position: relative;
 
   &:hover {
@@ -72,33 +69,45 @@ const StyledCocktail = styled.div`
   &:hover .overlay {
     opacity: 1;
   }
+`;
 
-  .overlay {
-    position: absolute;
-    width: 100%;
-    transition: 0.5s ease;
-    opacity: 0;
-    top: 0;
-    font-size: 0.7rem;
-    padding: 0.1rem;
-    text-align: center;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    font-weight: bold;
-    font-size: 0.8rem;
-    border: none;
-  
+
+const StyledOverleyDiv = styled.div`
+  position: absolute;
+  width: 100%;
+  transition: 0.5s ease;
+  opacity: 0;
+  top: 0;
+  font-size: 0.7rem;
+  padding: 0.1rem;
+  text-align: center;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-weight: bold;
+  font-size: 0.8rem;
+  border: none;
+
+`;
+
+const StyledButton = styled.button`
+  border: none;
+  background: white;
+  cursor: pointer;
+  &:hover {
+    opacity: 1;
   }
-  .removeBtn, .addBtn {
-    border: none;
-    &:hover {
-      opacity: 1;
-    }
-    &:disabled {
-      opacity: 0.2;
-    }
+  &:disabled {
+    opacity: 0.2;
   }
 `;
+
+const StyledImg = styled.img`
+  width: 100%;
+  height: 30vh;
+  object-fit: cover;
+`;
+
+
 
 export default CocktailCard;

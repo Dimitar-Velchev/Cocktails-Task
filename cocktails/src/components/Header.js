@@ -7,13 +7,13 @@ function Header({ clearSearched }) {
   return (
     <>
       <StyledHeader>
-        <div onClick={clearSearched} className="logo-container">
+        <StyledLogoConteiner onClick={clearSearched} className="logo-container">
           <LocalBarIcon className="logo-img" />
           <Link to="/" className="logo-text">
             CocktaiLs
           </Link>
-        </div>
-        <nav>
+        </StyledLogoConteiner>
+        <StyledNav>
           <ul className="nav-links">
             <li>
               <Link to="/fav" className="nav-link">
@@ -26,7 +26,7 @@ function Header({ clearSearched }) {
               </Link>
             </li>
           </ul>
-        </nav>
+        </StyledNav>
       </StyledHeader>
     </>
   );
@@ -39,62 +39,45 @@ const StyledHeader = styled.header`
   width: 90%;
   margin: auto;
   color: rgb(255, 194, 68);
-  .logo-container {
-    display: flex;
-    flex: 5;
-    .logo-img {
-      font-size: 3rem;
-      font-weight: 700;
-      margin: 0.2rem 0.5rem;
-      cursor: pointer;
-      color: rgb(68, 0, 99);
-    }
-    .logo-text {
-      letter-spacing: 0.5rem;
-      color: rgb(68, 0, 99);
-      font-size: 3rem;
-      cursor: pointer;
-    }
+`;
+const StyledLogoConteiner = styled.div`
+  display: flex;
+  flex: 5;
+  .logo-img {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0.2rem 0.5rem;
+    cursor: pointer;
+    color: rgb(68, 0, 99);
   }
-  nav {
-    flex: 2;
-    margin-right: 2rem;
-    font-weight: 500;
-    .nav-links {
-      letter-spacing: 0.1rem;
-      justify-content: space-around;
-      align-items: center;
-      display: flex;
-      list-style: none;
-      .nav-link {
-        font-size: 1rem;
-        text-decoration: none;
-        color: rgb(68, 0, 99);
-        border: 2px ridge white;
-        background-color: white;
-        padding: 0.2rem 1rem;
-        border-radius: 2rem;
-      }
-      .btn {
-        font-size: 0.8rem;
-        font-weight: bold;
-        border: none;
-        &:hover {
-          border-radius: 2rem;
-          background-color: rgb(186, 182, 166);
-          font-weight: 600;
-          color: white;
-        }
-      }
-    }
+  .logo-text {
+    letter-spacing: 0.5rem;
+    color: rgb(68, 0, 99);
+    font-size: 3rem;
+    cursor: pointer;
   }
+`;
 
-  .random-btn-container {
+const StyledNav = styled.nav`
+  flex: 2;
+  margin-right: 2rem;
+  font-weight: 500;
+  .nav-links {
+    letter-spacing: 0.1rem;
+    justify-content: space-around;
+    align-items: center;
     display: flex;
-    flex: 1;
+    list-style: none;
+    .nav-link {
+      font-size: 1rem;
+      text-decoration: none;
+      color: rgb(68, 0, 99);
+      border: 2px ridge white;
+      background-color: white;
+      padding: 0.2rem 1rem;
+      border-radius: 2rem;
+    }
   }
 `;
 
 export default Header;
-
-
