@@ -6,7 +6,7 @@ import { getAllCocktails } from "./services/cocktailService";
 
 //Components
 import HeaderComponent from "./components/Header";
-import Home from "./components/Home";
+import Home from "./components/Home/Home";
 import Favorite from "./components/Fav";
 import Random from "./components/Random";
 import CocktailDetails from "./components/CoktailDetailsCard";

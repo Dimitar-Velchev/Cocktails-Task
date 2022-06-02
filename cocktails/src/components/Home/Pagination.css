@@ -1,0 +1,29 @@
+.pagination-container{
+    display: flex;
+    padding: 4rem;
+    min-height: 10vh;
+    align-items: center;
+    justify-content: space-between; 
+      width: 30%;
+      margin: auto;
+      list-style: none;
+  }
+
+  .pagination-container a {
+    border: 1px solid rgb(255,194,68);
+    border-radius: 5px ;
+    padding: 4px;
+    cursor: pointer;
+    font-weight: 400;
+  }
+
+  
+  .pagination-container a:hover{
+    color: white;
+    background-color:rgb(255,194,68) ;
+  }
+
+  .pagination-active a {
+    color: white;
+    background-color:rgb(255,194,68) ;
+  }
