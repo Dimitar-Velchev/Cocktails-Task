@@ -29,6 +29,7 @@ function Home({
     setPageNumber(selected);
   };
 
+  
   const showCocktails = cocktails
     .slice(cocktailsSeen, cocktailsSeen + cocktailsPerPage)
     .map((cocktail) => {
@@ -51,7 +52,7 @@ function Home({
         onUpdate={updateSearch}
       />
       <CocktailList>
-        {showCocktails}
+        {cocktails.length !== 0 ? showCocktails : <StyledInfo> No results found </StyledInfo>}
       </CocktailList>
       <ReactPaginate
           previousLabel={"Previous"}
@@ -77,6 +78,11 @@ const CocktailList = styled.div`
   grid-column-gap: 3rem;
   grid-row-gap: 3rem;
   `;
+
+const StyledInfo = styled.h1`
+margin: auto;
+`;
+
 
 
 export default Home;

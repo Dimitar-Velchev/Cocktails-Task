@@ -47,11 +47,10 @@ function App() {
     saveToLocalStorage(newFavoriteList);
   };
 
-  
-
   const handleSearch = (e) => {
     e.preventDefault();
-    setQuery(search);
+     setQuery(search);
+
     setSearch("");
   };
 
@@ -89,8 +88,8 @@ function App() {
             removeFavorite={removeFavoriteCocktail}
           />
         </Route>
-  
-        <Route path={"/fav"} >
+
+        <Route path={"/fav"}>
           <Favorite removeFavorite={removeFavoriteCocktail} />
         </Route>
         <Route path={"/random"}>
