@@ -15,7 +15,7 @@ function Random({ handleFavorite }) {
 
   const { favs } = useContext(CocktailContext);
 
-  let addedFavs = favs?.find((x) => x.idDrink === random.idDrink);
+  let addedFavs = favs.find((x) => x.idDrink === random.idDrink);
   const btnDisabled = addedFavs ? true : false;
 
   useEffect(() => {
