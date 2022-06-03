@@ -76,6 +76,9 @@ const StyledNav = styled.nav`
       background-color: white;
       padding: 0.2rem 1rem;
       border-radius: 2rem;
+      &:hover {
+        font-weight: bold;
+      }
     }
   }
 `;

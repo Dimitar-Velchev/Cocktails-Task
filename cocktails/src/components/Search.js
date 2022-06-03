@@ -72,7 +72,7 @@ const StyledButton = styled.button`
   width: 60%;
   margin: 0rem 0rem 2rem;
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: rgb(68, 0, 99);
   background: white;
   border: 2px solid rgb(186, 182, 166);
@@ -80,6 +80,10 @@ const StyledButton = styled.button`
   border-radius: 0.5rem;
   font-weight: 400;
   cursor: pointer;
+
+  &:hover{
+    font-weight: bold;
+  }
 `;
 
 const StyledSearch = styled.div`
