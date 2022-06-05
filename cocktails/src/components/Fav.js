@@ -15,22 +15,27 @@ function Favorite({ removeFavorite }) {
 
   useEffect(() => {
     getAllCocktails().then((data) => {
+      const cocktailIDs = [];
+      data.map((x) => cocktailIDs.push(x.idDrink));
       favs.forEach((fav) => {
         const updated = data.find((x) => x.idDrink === fav.idDrink);
-        if (JSON.stringify(updated) !== JSON.stringify(fav)) {
+        const notify = (drink) =>
+          toast.info(`Cocktail ${drink.strDrink} has been updated in the API!`, {
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+          });
+        if (
+          JSON.stringify(updated) === JSON.stringify(fav) &&
+          cocktailIDs.includes(fav.idDrink)
+        ) {
           setUpdatedCocktails(updated);
-          const notify = () =>
-            toast.info(`Cocktail ${fav.strDrink} has been updated in the API!`, {
-              autoClose: 5000,
-              hideProgressBar: true,
-              closeOnClick: true,
-              pauseOnHover: true,
-            });
-          notify();
+          notify(updated);
         }
       });
     });
-  }, [favs]);
+  },[]);
 
   return (
     <>

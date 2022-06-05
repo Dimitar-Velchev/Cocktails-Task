@@ -83,7 +83,6 @@ const StyledButton = styled.button`
 
   &:hover{
     font-weight: bold;
-    box-shadow: 0px 5px 30px rgb(68,0,99);
   }
 `;
 
