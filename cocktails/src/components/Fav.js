@@ -1,26 +1,56 @@
 import styled from "styled-components";
-import { useContext } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import { useState, useContext, useEffect } from "react";
 
 import CocktailCard from "./CocktailCard";
 import { CocktailContext } from "../context/AuthContext";
 
+import { getAllCocktails } from "../services/cocktailService";
+
 function Favorite({ removeFavorite }) {
   const { favs } = useContext(CocktailContext);
+  const [updatedCocktails, setUpdatedCocktails] = useState([]);
+
+  useEffect(() => {
+    getAllCocktails().then((data) => {
+      favs.forEach((fav) => {
+        const updated = data.find((x) => x.idDrink === fav.idDrink);
+        if (JSON.stringify(updated) !== JSON.stringify(fav)) {
+          setUpdatedCocktails(updated);
+          const notify = () =>
+            toast.info(`Cocktail ${fav.strDrink} has been updated in the API!`, {
+              autoClose: 5000,
+              hideProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: true,
+            });
+          notify();
+        }
+      });
+    });
+  }, [favs]);
 
   return (
-    <CocktailList>
-      {favs.length ? (
-        favs.map((x) => (
-          <CocktailCard
-            removeFavorite={removeFavorite}
-            key={x.idDrink}
-            cocktail={x}
-          />
-        ))
-      ) : (
-        <StyledInfo>You haven't added any favourite cocktails yet.</StyledInfo>
-      )}
-    </CocktailList>
+    <>
+      {updatedCocktails?.length !== 0 ? <ToastContainer /> : ""}
+      <CocktailList>
+        {favs.length ? (
+          favs.map((x) => (
+            <CocktailCard
+              removeFavorite={removeFavorite}
+              key={x.idDrink}
+              cocktail={x}
+            />
+          ))
+        ) : (
+          <StyledInfo>
+            You haven't added any favourite cocktails yet.
+          </StyledInfo>
+        )}
+      </CocktailList>
+    </>
   );
 }
 

@@ -22,7 +22,7 @@ const CocktailCard = ({ cocktail, handleFavorite, removeFavorite }) => {
       </Link>
 
       <StyleInstruction>{cocktail.strInstructions}</StyleInstruction>
-      <StyledOverleyDiv className="overlay">
+      <StyledOverleyDiv className="overlay" >
         <StyledButton
           className="addBtn"
           onClick={() => handleFavorite(cocktail)}
@@ -96,6 +96,7 @@ const StyledOverleyDiv = styled.div`
   font-weight: bold;
   font-size: 0.8rem;
   border: none;
+
 `;
 
 const StyledButton = styled.button`

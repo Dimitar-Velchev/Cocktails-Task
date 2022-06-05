@@ -68,10 +68,11 @@ function App() {
     const newFavoriteList = favs.filter(
       (fav) => fav.idDrink !== cocktail.idDrink
     );
-
     setFavs(newFavoriteList);
     saveToLocalStorage(newFavoriteList);
   };
+
+
 
   return (
     <CocktailContext.Provider value={values}>
