@@ -5,7 +5,7 @@ import ReactPaginate from "react-paginate";
 import CocktailCard from "../CocktailCard";
 import Search from "../Search";
 
-import { CocktailContext } from "../../context/AuthContext";
+import { CocktailContext } from "../../context/CocktailContext";
 
 import "./Pagination.css";
 

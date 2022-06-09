@@ -7,7 +7,7 @@ import ReplayIcon from "@mui/icons-material/Replay";
 import CategoryIcon from "@mui/icons-material/Category";
 import WineBarIcon from "@mui/icons-material/WineBar";
 
-import { CocktailContext } from "../context/AuthContext";
+import { CocktailContext } from "../context/CocktailContext";
 import { getRandomCocktail } from "../services/cocktailService";
 
 function Random({ handleFavorite }) {

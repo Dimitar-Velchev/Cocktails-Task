@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useState, useContext, useEffect } from "react";
 
 import CocktailCard from "./CocktailCard";
-import { CocktailContext } from "../context/AuthContext";
+import { CocktailContext } from "../context/CocktailContext";
 
 import { getAllCocktails } from "../services/cocktailService";
 
@@ -22,12 +22,12 @@ function Favorite({ removeFavorite }) {
         const notify = (drink) =>
           toast.info(`Cocktail ${drink.strDrink} has been updated in the API!`, {
             autoClose: 5000,
-            hideProgressBar: true,
+            hideProgressBar: true, 
             closeOnClick: true,
             pauseOnHover: true,
           });
         if (
-          JSON.stringify(updated) === JSON.stringify(fav) &&
+          JSON.stringify(updated) !== JSON.stringify(fav) &&
           cocktailIDs.includes(fav.idDrink)
         ) {
           setUpdatedCocktails(updated);

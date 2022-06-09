@@ -5,7 +5,7 @@ import { useContext } from "react";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
-import { CocktailContext } from "../context/AuthContext";
+import { CocktailContext } from "../context/CocktailContext";
 
 const CocktailCard = ({ cocktail, handleFavorite, removeFavorite }) => {
   const { favs } = useContext(CocktailContext);

@@ -1,7 +1,7 @@
 import { Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import { CocktailContext } from "./context/AuthContext";
+import { CocktailContext } from "./context/CocktailContext";
 import { getAllCocktails } from "./services/cocktailService";
 
 //Components

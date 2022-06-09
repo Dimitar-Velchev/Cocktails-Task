@@ -8,7 +8,7 @@ import CategoryIcon from "@mui/icons-material/Category";
 import WineBarIcon from "@mui/icons-material/WineBar";
 
 import { getCocktailDetails } from "../services/cocktailService";
-import { CocktailContext } from "../context/AuthContext";
+import { CocktailContext } from "../context/CocktailContext";
 
 function CocktailDetails({ handleFavorite }) {
   const { favs } = useContext(CocktailContext);
